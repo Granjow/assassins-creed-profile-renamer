@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<project name="Assassin's Creed Profile Renamer" basedir="." default="build">
+
+  <property name="acpr.version" value="1.4"/>
+
+  <property name="build.classes" value="build"/>
+  <property name="java.dir" value="."/>
+  <property name="name" value="Assassin's Creed Profile Renamer"/>
+  <property name="build.jar" value="ACProfileRenamer${acpr.version}.jar"/>
+
+  <path id="classpath">
+    <pathelement location="."/>
+  </path>
+
+  <target name="build" depends="clean" description="Building jar file">
+    <mkdir dir="${build.classes}"/>
+    <javac srcdir="${java.dir}"
+	   destdir="${build.classes}"
+	   deprecation="true"
+	   optimize="true"
+	   debug="true">
+      <classpath refid="classpath"/>
+    </javac>
+
+    <copy todir="${build.classes}">
+      <fileset dir="${java.dir}">
+	<include name="pictures/*.jpg"/>
+	<include name="pictures/ACPR-Button-*.png"/>
+      </fileset>
+    </copy>
+
+    <jar jarfile="${build.jar}">
+      <fileset dir="${build.classes}"/>
+      <manifest>
+	<attribute name="Built-By" value="Simon A. Eugster (Granjow)"/>
+	<attribute name="Main-Class" value="net.granjow.acpr.Main"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="clean">
+    <delete dir="${build.classes}"/>
+    <delete file="${build.jar}"/>
+    <delete>
+      <fileset dir=".">
+	<include  name="*.orig"/>
+	<include name="**/*.class"/>
+      </fileset>
+    </delete>
+  </target>
+  
+</project>

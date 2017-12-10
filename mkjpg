@@ -1,0 +1,7 @@
+cd pictures
+for i in *.png
+do 
+	f=$(echo $i | sed -e 's/png/jpg/')
+	convert -quality 95 $i $f
+done
+cd -

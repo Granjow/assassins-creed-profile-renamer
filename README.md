@@ -4,6 +4,8 @@ ACPR is a tool to clone and rename savegames from the first game of Assassin’s
 
 More information on [granjow.net](http://granjow.net/acpr.html).
 
+![Load screen](pictures/ACPR-Load.jpg)
+
 ## Building with Docker
 
 First, create the docker image with JDK and Ant.
